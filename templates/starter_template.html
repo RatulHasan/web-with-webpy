@@ -1,4 +1,4 @@
-$def with (name)
+$def with (all_posts)
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -34,7 +34,7 @@ $def with (name)
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -61,8 +61,23 @@ $def with (name)
     <main role="main" class="container">
 
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Posts</th>
+                    </tr>
+                    $for posts in all_posts:
+                    <tr>
+                        <td>$posts["id"]</td>
+                        <td>$posts["title"]</td>
+                        <td>$posts["body"]</td>
+                    </tr>
+
+                </table>
+            </div>
+
       </div>
 
     </main><!-- /.container -->

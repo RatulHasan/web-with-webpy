@@ -1,4 +1,13 @@
 import web
+from pymongo import MongoClient
+
+myClient = MongoClient()
+
+db = myClient.mydb
+
+posts = db.posts
+
+all_posts = posts.find()
 
 urls = (
     '/(.*)'#this is url#
@@ -11,13 +20,13 @@ render = web.template.render('templates/')
 app = web.application(urls, globals())
 
 class index:
-    def GET(self, name):
+    def GET(self, posts):
         # Render templates
-        if not name:
-            name = 'Ratul'
-            return render.main(name)
+        if not posts:
+            posts = 'Ratul'
+            return render.main(posts)
         else:
-            return render.starter_template(name)
+            return render.starter_template(all_posts)
 
         # Render templates
 
